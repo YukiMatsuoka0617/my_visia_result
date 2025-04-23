@@ -71,7 +71,7 @@ class CustomBarChart extends StatelessWidget {
                   textAlign: TextAlign.center,
                   style: const TextStyle(
                     fontWeight: FontWeight.bold,
-                    fontSize: 12,
+                    fontSize: 10,
                   ),
                 );
               },
@@ -105,13 +105,29 @@ class CustomBarChart extends StatelessWidget {
             ),
           ),
         ),
-        gridData: FlGridData(show: true),
+        gridData: FlGridData(
+          show: true,
+          drawVerticalLine: false,
+          drawHorizontalLine: true,
+        ),
         backgroundColor: Colors.white,
         extraLinesData: ExtraLinesData(
           horizontalLines: [
-            HorizontalLine(y: 85, color: Colors.blue, strokeWidth: 2),
-            HorizontalLine(y: 50, color: Colors.black, strokeWidth: 2),
-            HorizontalLine(y: 15, color: Colors.blue, strokeWidth: 2),
+            HorizontalLine(
+              y: 85,
+              color: Colors.blue,
+              strokeWidth: 2,
+            ),
+            HorizontalLine(
+              y: 50,
+              color: Colors.black,
+              strokeWidth: 2,
+            ),
+            HorizontalLine(
+              y: 15,
+              color: Colors.blue,
+              strokeWidth: 2,
+            ),
           ],
         ),
       ),
