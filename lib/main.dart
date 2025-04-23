@@ -102,27 +102,36 @@ class _MyHomePageState extends State<MyHomePage> {
                 Expanded(
                   child: ElevatedButton(
                     onPressed: () {},
-                    child: Text(
+                    child: AutoSizeText(
                       labelData[0],
                       textAlign: TextAlign.center,
+                      maxLines: 1,
+                      minFontSize: 10,
+                      stepGranularity: 1,
                     ),
                   ),
                 ),
                 Expanded(
                   child: ElevatedButton(
                     onPressed: () {},
-                    child: Text(
+                    child: AutoSizeText(
                       labelData[1],
                       textAlign: TextAlign.center,
+                      maxLines: 2,
+                      minFontSize: 10,
+                      stepGranularity: 1,
                     ),
                   ),
                 ),
                 Expanded(
                   child: ElevatedButton(
                     onPressed: () {},
-                    child: Text(
+                    child: AutoSizeText(
                       labelData[2],
                       textAlign: TextAlign.center,
+                      maxLines: 2,
+                      minFontSize: 10,
+                      stepGranularity: 1,
                     ),
                   ),
                 ),
@@ -145,18 +154,24 @@ class _MyHomePageState extends State<MyHomePage> {
                 Expanded(
                   child: ElevatedButton(
                     onPressed: () {},
-                    child: Text(
+                    child: AutoSizeText(
                       labelData[4],
                       textAlign: TextAlign.center,
+                      maxLines: 1,
+                      minFontSize: 10,
+                      stepGranularity: 1,
                     ),
                   ),
                 ),
                 Expanded(
                   child: ElevatedButton(
                     onPressed: () {},
-                    child: Text(
+                    child: AutoSizeText(
                       labelData[5],
                       textAlign: TextAlign.center,
+                      maxLines: 1,
+                      minFontSize: 10,
+                      stepGranularity: 1,
                     ),
                   ),
                 ),
@@ -170,10 +185,6 @@ class _MyHomePageState extends State<MyHomePage> {
                       minFontSize: 10,
                       stepGranularity: 1,
                     ),
-                    // Text(
-                    //   labelData[6],
-                    //   textAlign: TextAlign.center,
-                    // ),
                   ),
                 ),
               ],
