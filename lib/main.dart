@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_result_visia/custom_bar_chart.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -94,6 +95,88 @@ class _MyHomePageState extends State<MyHomePage> {
                   );
                 },
               ),
+            ),
+            const SizedBox(height: 16),
+            Row(
+              children: [
+                Expanded(
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    child: Text(
+                      labelData[0],
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    child: Text(
+                      labelData[1],
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    child: Text(
+                      labelData[2],
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              children: [
+                Expanded(
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    child: AutoSizeText(
+                      labelData[3],
+                      textAlign: TextAlign.center,
+                      maxLines: 1,
+                      minFontSize: 10,
+                      stepGranularity: 1,
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    child: Text(
+                      labelData[4],
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    child: Text(
+                      labelData[5],
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    child: AutoSizeText(
+                      labelData[6],
+                      textAlign: TextAlign.center,
+                      maxLines: 1,
+                      minFontSize: 10,
+                      stepGranularity: 1,
+                    ),
+                    // Text(
+                    //   labelData[6],
+                    //   textAlign: TextAlign.center,
+                    // ),
+                  ),
+                ),
+              ],
             ),
             const SizedBox(height: 16),
             SmoothPageIndicator(
