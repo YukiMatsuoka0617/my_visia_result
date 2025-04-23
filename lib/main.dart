@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_result_visia/custom_bar_chart.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 void main() {
   runApp(const MyApp());
@@ -46,6 +47,8 @@ class _MyHomePageState extends State<MyHomePage> {
     'Porphyrins',
   ];
 
+  final PageController _pageController = PageController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,23 +56,46 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
       ),
-      body: PageView.builder(
-        itemCount: allChartData.length,
-        itemBuilder: (context, index) {
-          return Column(
-            children: [
-              Text(
-                '2025/04/20',
-                style:
-                    const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+      body: Padding(
+        padding: EdgeInsets.all(16),
+        child: Column(
+          children: [
+            Expanded(
+              child: PageView.builder(
+                controller: _pageController,
+                itemCount: allChartData.length,
+                itemBuilder: (context, index) {
+                  return Column(
+                    children: [
+                      const Text(
+                        '2025/04/20',
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
+                      const SizedBox(height: 16),
+                      Expanded(
+                        child: CustomBarChart(
+                          data: allChartData[index],
+                          labelData: labelData,
+                        ),
+                      ),
+                    ],
+                  );
+                },
               ),
-              CustomBarChart(
-                data: allChartData[index],
-                labelData: labelData,
+            ),
+            const SizedBox(height: 16),
+            SmoothPageIndicator(
+              controller: _pageController,
+              count: allChartData.length,
+              effect: const WormEffect(
+                dotHeight: 10,
+                dotWidth: 10,
+                activeDotColor: Colors.deepPurple,
               ),
-            ],
-          );
-        },
+            ),
+          ],
+        ),
       ),
     );
   }
