@@ -34,8 +34,10 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   final List<List<double>> allChartData = [
     [-37, -39, -41, 47, 46, -24, 4],
-    [20, -10, 30, -5, 15, 40, -20],
-    [10, 10, 10, 10, 10, 10, 10],
+    [-39, 43, -41, 44, 45, -31, 49],
+    [-41, -4, 8, 23, 17, -41, -25],
+    [-30, 5, 15, 1, 26, -41, -10],
+    [-36, -39, -41, 29, 38, -41, -41],
   ];
   final List<String> labelData = [
     'Spots',
@@ -45,6 +47,13 @@ class _MyHomePageState extends State<MyHomePage> {
     'Texture',
     'Pores',
     'Porphyrins',
+  ];
+  final List<String> dateData = [
+    '2025/04/20',
+    '2025/03/14',
+    '2025/02/16',
+    '2025/01/10',
+    '2024/12/02',
   ];
 
   final PageController _pageController = PageController();
@@ -67,10 +76,12 @@ class _MyHomePageState extends State<MyHomePage> {
                 itemBuilder: (context, index) {
                   return Column(
                     children: [
-                      const Text(
-                        '2025/04/20',
+                      Text(
+                        dateData[index],
                         style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.bold),
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                       const SizedBox(height: 16),
                       Expanded(
