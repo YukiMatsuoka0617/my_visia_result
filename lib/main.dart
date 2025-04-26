@@ -58,6 +58,10 @@ class _MyHomePageState extends State<MyHomePage> {
   ];
 
   final PageController _pageController = PageController();
+  int _currentPage = 0;
+  int _currentLabel = 0;
+  bool isDailyResultShown = true;
+  var selectLabelIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -70,38 +74,78 @@ class _MyHomePageState extends State<MyHomePage> {
         padding: EdgeInsets.all(16),
         child: Column(
           children: [
-            Expanded(
-              child: PageView.builder(
-                controller: _pageController,
-                itemCount: allChartData.length,
-                itemBuilder: (context, index) {
-                  return Column(
-                    children: [
-                      Text(
-                        dateData[index],
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      const SizedBox(height: 16),
-                      Expanded(
-                        child: CustomBarChart(
-                          data: allChartData[index],
-                          labelData: labelData,
-                        ),
-                      ),
-                    ],
-                  );
-                },
+            if (isDailyResultShown) ...[
+              Text(
+                dateData[_currentPage],
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-            ),
+              Expanded(
+                child: PageView.builder(
+                  controller: _pageController,
+                  itemCount: allChartData.length,
+                  onPageChanged: (value) {
+                    setState(() {
+                      _currentPage = value;
+                    });
+                  },
+                  itemBuilder: (context, index) {
+                    return Expanded(
+                      child: CustomBarChart(
+                        data: allChartData[index],
+                        labelData: labelData,
+                      ),
+                    );
+                  },
+                ),
+              ),
+            ],
+            if (!isDailyResultShown) ...[
+              Text(
+                labelData[selectLabelIndex],
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              Expanded(
+                  child: CustomBarChart(
+                data:
+                    allChartData.map((list) => list[selectLabelIndex]).toList(),
+                labelData: dateData,
+              )),
+            ],
             const SizedBox(height: 16),
             Row(
               children: [
                 Expanded(
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      setState(() {
+                        isDailyResultShown = true;
+                      });
+                    },
+                    child: AutoSizeText(
+                      'All',
+                      textAlign: TextAlign.center,
+                      maxLines: 1,
+                      minFontSize: 10,
+                      stepGranularity: 1,
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: ElevatedButton(
+                    onPressed: () {
+                      setState(() {
+                        selectLabelIndex = 0;
+                        isDailyResultShown = false;
+                      });
+                    },
                     child: AutoSizeText(
                       labelData[0],
                       textAlign: TextAlign.center,
@@ -113,7 +157,12 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
                 Expanded(
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      setState(() {
+                        selectLabelIndex = 1;
+                        isDailyResultShown = false;
+                      });
+                    },
                     child: AutoSizeText(
                       labelData[1],
                       textAlign: TextAlign.center,
@@ -125,7 +174,12 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
                 Expanded(
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      setState(() {
+                        selectLabelIndex = 2;
+                        isDailyResultShown = false;
+                      });
+                    },
                     child: AutoSizeText(
                       labelData[2],
                       textAlign: TextAlign.center,
@@ -141,7 +195,12 @@ class _MyHomePageState extends State<MyHomePage> {
               children: [
                 Expanded(
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      setState(() {
+                        selectLabelIndex = 3;
+                        isDailyResultShown = false;
+                      });
+                    },
                     child: AutoSizeText(
                       labelData[3],
                       textAlign: TextAlign.center,
@@ -153,7 +212,12 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
                 Expanded(
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      setState(() {
+                        selectLabelIndex = 4;
+                        isDailyResultShown = false;
+                      });
+                    },
                     child: AutoSizeText(
                       labelData[4],
                       textAlign: TextAlign.center,
@@ -165,7 +229,12 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
                 Expanded(
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      setState(() {
+                        selectLabelIndex = 5;
+                        isDailyResultShown = false;
+                      });
+                    },
                     child: AutoSizeText(
                       labelData[5],
                       textAlign: TextAlign.center,
@@ -177,7 +246,12 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
                 Expanded(
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      setState(() {
+                        selectLabelIndex = 6;
+                        isDailyResultShown = false;
+                      });
+                    },
                     child: AutoSizeText(
                       labelData[6],
                       textAlign: TextAlign.center,
@@ -190,15 +264,16 @@ class _MyHomePageState extends State<MyHomePage> {
               ],
             ),
             const SizedBox(height: 16),
-            SmoothPageIndicator(
-              controller: _pageController,
-              count: allChartData.length,
-              effect: const WormEffect(
-                dotHeight: 10,
-                dotWidth: 10,
-                activeDotColor: Colors.deepPurple,
+            if (isDailyResultShown)
+              SmoothPageIndicator(
+                controller: _pageController,
+                count: allChartData.length,
+                effect: const WormEffect(
+                  dotHeight: 10,
+                  dotWidth: 10,
+                  activeDotColor: Colors.deepPurple,
+                ),
               ),
-            ),
           ],
         ),
       ),
