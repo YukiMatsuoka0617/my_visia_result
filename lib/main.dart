@@ -1,5 +1,5 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_result_visia/chart_select_button_area.dart';
 import 'package:flutter_application_result_visia/custom_bar_chart.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -119,150 +119,22 @@ class _MyHomePageState extends State<MyHomePage> {
               )),
             ],
             const SizedBox(height: 16),
-            Row(
-              children: [
-                Expanded(
-                  child: ElevatedButton(
-                    onPressed: () {
-                      setState(() {
-                        _currentPage = 0;
-                        isDailyResultShown = true;
-                      });
-                    },
-                    child: AutoSizeText(
-                      'All',
-                      textAlign: TextAlign.center,
-                      maxLines: 1,
-                      minFontSize: 10,
-                      stepGranularity: 1,
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: ElevatedButton(
-                    onPressed: () {
-                      setState(() {
-                        selectLabelIndex = 0;
-                        isDailyResultShown = false;
-                      });
-                    },
-                    child: AutoSizeText(
-                      labelData[0],
-                      textAlign: TextAlign.center,
-                      maxLines: 1,
-                      minFontSize: 10,
-                      stepGranularity: 1,
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: ElevatedButton(
-                    onPressed: () {
-                      setState(() {
-                        selectLabelIndex = 1;
-                        isDailyResultShown = false;
-                      });
-                    },
-                    child: AutoSizeText(
-                      labelData[1],
-                      textAlign: TextAlign.center,
-                      maxLines: 2,
-                      minFontSize: 10,
-                      stepGranularity: 1,
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: ElevatedButton(
-                    onPressed: () {
-                      setState(() {
-                        selectLabelIndex = 2;
-                        isDailyResultShown = false;
-                      });
-                    },
-                    child: AutoSizeText(
-                      labelData[2],
-                      textAlign: TextAlign.center,
-                      maxLines: 2,
-                      minFontSize: 10,
-                      stepGranularity: 1,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            Row(
-              children: [
-                Expanded(
-                  child: ElevatedButton(
-                    onPressed: () {
-                      setState(() {
-                        selectLabelIndex = 3;
-                        isDailyResultShown = false;
-                      });
-                    },
-                    child: AutoSizeText(
-                      labelData[3],
-                      textAlign: TextAlign.center,
-                      maxLines: 1,
-                      minFontSize: 10,
-                      stepGranularity: 1,
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: ElevatedButton(
-                    onPressed: () {
-                      setState(() {
-                        selectLabelIndex = 4;
-                        isDailyResultShown = false;
-                      });
-                    },
-                    child: AutoSizeText(
-                      labelData[4],
-                      textAlign: TextAlign.center,
-                      maxLines: 1,
-                      minFontSize: 10,
-                      stepGranularity: 1,
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: ElevatedButton(
-                    onPressed: () {
-                      setState(() {
-                        selectLabelIndex = 5;
-                        isDailyResultShown = false;
-                      });
-                    },
-                    child: AutoSizeText(
-                      labelData[5],
-                      textAlign: TextAlign.center,
-                      maxLines: 1,
-                      minFontSize: 10,
-                      stepGranularity: 1,
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: ElevatedButton(
-                    onPressed: () {
-                      setState(() {
-                        selectLabelIndex = 6;
-                        isDailyResultShown = false;
-                      });
-                    },
-                    child: AutoSizeText(
-                      labelData[6],
-                      textAlign: TextAlign.center,
-                      maxLines: 1,
-                      minFontSize: 10,
-                      stepGranularity: 1,
-                    ),
-                  ),
-                ),
-              ],
-            ),
+            ChartSelectButtonArea(
+                isDailyResultShown: isDailyResultShown,
+                selectLabelIndex: selectLabelIndex,
+                onLabelSelected: (index) {
+                  setState(() {
+                    selectLabelIndex = index;
+                    isDailyResultShown = false;
+                  });
+                },
+                onAllSelected: () {
+                  setState(() {
+                    _currentPage = 0;
+                    isDailyResultShown = true;
+                  });
+                },
+                labelData: labelData),
             const SizedBox(height: 16),
             if (isDailyResultShown)
               SmoothPageIndicator(
