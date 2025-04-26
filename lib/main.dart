@@ -59,7 +59,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   final PageController _pageController = PageController();
   int _currentPage = 0;
-  int _currentLabel = 0;
   bool isDailyResultShown = true;
   var selectLabelIndex = 0;
 
@@ -126,6 +125,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: ElevatedButton(
                     onPressed: () {
                       setState(() {
+                        _currentPage = 0;
                         isDailyResultShown = true;
                       });
                     },
