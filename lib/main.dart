@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_result_visia/chart_display_area.dart';
 import 'package:flutter_application_result_visia/chart_select_button_area.dart';
-import 'package:flutter_application_result_visia/custom_bar_chart.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 void main() {
@@ -73,51 +73,22 @@ class _MyHomePageState extends State<MyHomePage> {
         padding: EdgeInsets.all(16),
         child: Column(
           children: [
-            if (isDailyResultShown) ...[
-              Text(
-                dateData[_currentPage],
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
+            Expanded(
+              child: ChartDisplayArea(
+                isDailyResultShown: isDailyResultShown,
+                currentPage: _currentPage,
+                selectLabelIndex: selectLabelIndex,
+                dateData: dateData,
+                labelData: labelData,
+                allChartData: allChartData,
+                pageController: _pageController,
+                onPageChanged: (value) {
+                  setState(() {
+                    _currentPage = value;
+                  });
+                },
               ),
-              Expanded(
-                child: PageView.builder(
-                  controller: _pageController,
-                  itemCount: allChartData.length,
-                  onPageChanged: (value) {
-                    setState(() {
-                      _currentPage = value;
-                    });
-                  },
-                  itemBuilder: (context, index) {
-                    return Expanded(
-                      child: CustomBarChart(
-                        data: allChartData[index],
-                        labelData: labelData,
-                      ),
-                    );
-                  },
-                ),
-              ),
-            ],
-            if (!isDailyResultShown) ...[
-              Text(
-                labelData[selectLabelIndex],
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              Expanded(
-                  child: CustomBarChart(
-                data:
-                    allChartData.map((list) => list[selectLabelIndex]).toList(),
-                labelData: dateData,
-              )),
-            ],
+            ),
             const SizedBox(height: 16),
             ChartSelectButtonArea(
                 isDailyResultShown: isDailyResultShown,
