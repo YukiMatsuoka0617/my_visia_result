@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_result_visia/chart_display_area.dart';
+import 'package:flutter_application_result_visia/chart_select_area.dart';
 import 'package:flutter_application_result_visia/chart_select_button_area.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -62,6 +63,8 @@ class _MyHomePageState extends State<MyHomePage> {
   bool isDailyResultShown = true;
   var selectLabelIndex = 0;
 
+  String selected = 'All';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -90,22 +93,32 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
             const SizedBox(height: 16),
-            ChartSelectButtonArea(
-                isDailyResultShown: isDailyResultShown,
-                selectLabelIndex: selectLabelIndex,
-                onLabelSelected: (index) {
-                  setState(() {
-                    selectLabelIndex = index;
-                    isDailyResultShown = false;
-                  });
-                },
-                onAllSelected: () {
-                  setState(() {
-                    _currentPage = 0;
-                    isDailyResultShown = true;
-                  });
-                },
-                labelData: labelData),
+            ChartSelectArea(
+              selected: selected,
+              onSelectionChanged: (newSelection) {
+                setState(() {
+                  selected = newSelection.first;
+                  isDailyResultShown = (selected == 'All');
+                });
+              },
+            ),
+            if (!isDailyResultShown)
+              ChartSelectButtonArea(
+                  isDailyResultShown: isDailyResultShown,
+                  selectLabelIndex: selectLabelIndex,
+                  onLabelSelected: (index) {
+                    setState(() {
+                      selectLabelIndex = index;
+                      isDailyResultShown = false;
+                    });
+                  },
+                  onAllSelected: () {
+                    setState(() {
+                      _currentPage = 0;
+                      isDailyResultShown = true;
+                    });
+                  },
+                  labelData: labelData),
             const SizedBox(height: 16),
             if (isDailyResultShown)
               SmoothPageIndicator(
