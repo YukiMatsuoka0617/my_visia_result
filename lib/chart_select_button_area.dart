@@ -23,6 +23,18 @@ class ChartSelectButtonArea extends StatelessWidget {
       children: [
         Row(
           children: [
+            Expanded(
+              child: ElevatedButton(
+                onPressed: onAllSelected,
+                child: AutoSizeText(
+                  'All',
+                  textAlign: TextAlign.center,
+                  maxLines: 1,
+                  minFontSize: 10,
+                  stepGranularity: 1,
+                ),
+              ),
+            ),
             for (int i = 0; i < 3; i++)
               Expanded(
                 child: ElevatedButton(

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_result_visia/chart_display_area.dart';
 import 'package:flutter_application_result_visia/chart_select_area.dart';
-import 'package:flutter_application_result_visia/chart_select_button_area.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 void main() {
@@ -63,7 +62,8 @@ class _MyHomePageState extends State<MyHomePage> {
   bool isDailyResultShown = true;
   var selectLabelIndex = 0;
 
-  String selected = 'All';
+  String selectedCategory = 'All';
+  String selectedSubCategory = 'Spots';
 
   @override
   Widget build(BuildContext context) {
@@ -92,34 +92,6 @@ class _MyHomePageState extends State<MyHomePage> {
                 },
               ),
             ),
-            const SizedBox(height: 16),
-            ChartSelectArea(
-              selected: selected,
-              onSelectionChanged: (newSelection) {
-                setState(() {
-                  selected = newSelection.first;
-                  isDailyResultShown = (selected == 'All');
-                });
-              },
-            ),
-            if (!isDailyResultShown)
-              ChartSelectButtonArea(
-                  isDailyResultShown: isDailyResultShown,
-                  selectLabelIndex: selectLabelIndex,
-                  onLabelSelected: (index) {
-                    setState(() {
-                      selectLabelIndex = index;
-                      isDailyResultShown = false;
-                    });
-                  },
-                  onAllSelected: () {
-                    setState(() {
-                      _currentPage = 0;
-                      isDailyResultShown = true;
-                    });
-                  },
-                  labelData: labelData),
-            const SizedBox(height: 16),
             if (isDailyResultShown)
               SmoothPageIndicator(
                 controller: _pageController,
@@ -130,6 +102,36 @@ class _MyHomePageState extends State<MyHomePage> {
                   activeDotColor: Colors.deepPurple,
                 ),
               ),
+            const SizedBox(height: 16),
+            ChartSelectArea(
+              selected: selectedCategory,
+              onSelectionChanged: (newSelection) {
+                setState(() {
+                  selectedCategory = newSelection.first;
+                  isDailyResultShown = (selectedCategory == 'All');
+                });
+              },
+              showSubCategory: selectedCategory == 'Category',
+              selectedSubCategory: selectedSubCategory,
+              onSubCategoryChanged: (subSelection) {
+                setState(() {
+                  selectedSubCategory = subSelection.first;
+                });
+              },
+              subCategories: labelData,
+              onLabelSelected: (index) {
+                setState(() {
+                  selectLabelIndex = index;
+                  isDailyResultShown = false;
+                });
+              },
+              onAllSelected: () {
+                setState(() {
+                  _currentPage = 0;
+                  isDailyResultShown = true;
+                });
+              },
+            ),
           ],
         ),
       ),
