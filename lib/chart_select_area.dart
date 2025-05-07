@@ -62,27 +62,21 @@ class ChartSelectArea extends StatelessWidget {
                   return Expanded(
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 4),
-                      child: ConstrainedBox(
-                        constraints: const BoxConstraints(minHeight: 48),
-                        child: ChoiceChip(
-                          label: Center(
-                            child: Text(
-                              label,
-                              textAlign: TextAlign.center,
-                              softWrap: true,
-                              maxLines: 2,
-                              overflow: TextOverflow.visible,
-                            ),
+                      child: ChoiceChip(
+                        label: Center(
+                          child: Text(
+                            label,
+                            overflow: TextOverflow.fade,
                           ),
-                          selected: isSelected,
-                          onSelected: (_) {
-                            onSubCategoryChanged!({label});
-                            onLabelSelected(subCategories.indexOf(label));
-                          },
-                          selectedColor: Theme.of(context).colorScheme.primary,
-                          labelStyle: TextStyle(
-                            color: isSelected ? Colors.white : Colors.black,
-                          ),
+                        ),
+                        selected: isSelected,
+                        onSelected: (_) {
+                          onSubCategoryChanged!({label});
+                          onLabelSelected(subCategories.indexOf(label));
+                        },
+                        selectedColor: Theme.of(context).colorScheme.primary,
+                        labelStyle: TextStyle(
+                          color: isSelected ? Colors.white : Colors.black,
                         ),
                       ),
                     ),
@@ -98,13 +92,11 @@ class ChartSelectArea extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(horizontal: 4),
                       child: ChoiceChip(
                         label: Center(
-                            child: Text(
-                          label,
-                          textAlign: TextAlign.center,
-                          softWrap: true,
-                          maxLines: 2,
-                          overflow: TextOverflow.fade,
-                        )),
+                          child: Text(
+                            label,
+                            overflow: TextOverflow.fade,
+                          ),
+                        ),
                         selected: isSelected,
                         onSelected: (_) {
                           onSubCategoryChanged!({label});

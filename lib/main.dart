@@ -42,8 +42,8 @@ class _MyHomePageState extends State<MyHomePage> {
   ];
   final List<String> labelData = [
     'Spots',
-    'UV \nSpots',
-    'Brown \nSpots',
+    'UV Spots',
+    'Brown Spots',
     'Wrinkles',
     'Texture',
     'Pores',

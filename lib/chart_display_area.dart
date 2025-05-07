@@ -46,7 +46,11 @@ class ChartDisplayArea extends StatelessWidget {
                   itemBuilder: (context, index) {
                     return CustomBarChart(
                       data: allChartData[index],
-                      labelData: labelData,
+                      labelData: labelData.map((label) {
+                        if (label == 'UV Spots') return 'UV \nSpots';
+                        if (label == 'Brown Spots') return 'Brown \nSpots';
+                        return label;
+                      }).toList(),
                     );
                   },
                 )
