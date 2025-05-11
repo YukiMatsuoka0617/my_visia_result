@@ -29,7 +29,9 @@ class ChartDisplayArea extends StatelessWidget {
       children: [
         Text(
           isDailyResultShown
-              ? dateData[currentPage]
+              ? (dateData.isNotEmpty && currentPage < dateData.length
+                  ? dateData[currentPage]
+                  : 'No Data')
               : labelData[selectLabelIndex],
           textAlign: TextAlign.center,
           style: const TextStyle(
