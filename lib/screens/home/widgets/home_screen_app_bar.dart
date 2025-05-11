@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_result_visia/screens/input/screen/input_data_screen.dart';
 
 class HomeScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
   const HomeScreenAppBar({super.key});
@@ -16,7 +17,14 @@ class HomeScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
       centerTitle: true,
       actions: [
         IconButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => InputDataScreen(),
+              ),
+            );
+          },
           icon: const Icon(Icons.add),
         )
       ],
