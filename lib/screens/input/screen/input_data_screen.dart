@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_result_visia/data/hive/hive_sservise.dart';
 
 class InputDataScreen extends StatefulWidget {
   const InputDataScreen({super.key});
@@ -20,6 +21,10 @@ class _InputDataScreen extends State<StatefulWidget> {
   ];
   final Map<String, TextEditingController> controllers = {};
 
+  final hive = HiveService();
+  final _dateController = TextEditingController();
+  DateTime? selectedDate;
+
   @override
   void initState() {
     super.initState();
@@ -33,6 +38,7 @@ class _InputDataScreen extends State<StatefulWidget> {
     for (var controller in controllers.values) {
       controller.dispose();
     }
+    _dateController.dispose();
     super.dispose();
   }
 
@@ -43,6 +49,24 @@ class _InputDataScreen extends State<StatefulWidget> {
           .toList();
       print("入力されたデータ: $result");
       // ここで保存処理などに進めます
+    }
+  }
+
+  Future<void> _pickDate(BuildContext context) async {
+    final now = DateTime.now();
+    final picked = await showDatePicker(
+      context: context,
+      initialDate: now,
+      firstDate: DateTime(2000),
+      lastDate: DateTime(2100),
+    );
+
+    if (picked != null) {
+      setState(() {
+        selectedDate = picked;
+        _dateController.text =
+            '${picked.year}/${picked.month.toString().padLeft(2, '0')}/${picked.day.toString().padLeft(2, '0')}';
+      });
     }
   }
 
@@ -59,6 +83,24 @@ class _InputDataScreen extends State<StatefulWidget> {
           key: _formKey,
           child: ListView(
             children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8),
+                child: TextFormField(
+                  controller: _dateController,
+                  readOnly: true,
+                  decoration: const InputDecoration(
+                    labelText: '日付を選択',
+                    border: OutlineInputBorder(),
+                  ),
+                  onTap: () => _pickDate(context),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return '日付を選択してください';
+                    }
+                    return null;
+                  },
+                ),
+              ),
               ...labelData.map(
                 (label) {
                   return Padding(
