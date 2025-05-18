@@ -48,7 +48,15 @@ class _InputDataScreen extends State<StatefulWidget> {
           .map((label) => double.tryParse(controllers[label]!.text))
           .toList();
       print("入力されたデータ: $result");
-      // ここで保存処理などに進めます
+
+      print("selectedDate: $selectedDate");
+      if (selectedDate == null) {
+        print("日付を入力してください:");
+      }
+      hive.saveData(
+        '${selectedDate?.year}/${selectedDate?.month.toString().padLeft(2, '0')}/${selectedDate?.day.toString().padLeft(2, '0')}',
+        result,
+      );
     }
   }
 
