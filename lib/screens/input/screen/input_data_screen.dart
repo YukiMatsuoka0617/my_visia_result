@@ -138,6 +138,12 @@ class _InputDataScreen extends State<StatefulWidget> {
                 onPressed: _submit,
                 child: const Text('Save'),
               ),
+              ElevatedButton(
+                onPressed: () {
+                  hive.clearAllData();
+                },
+                child: const Text('Clear All Data'),
+              ),
             ],
           ),
         ),
