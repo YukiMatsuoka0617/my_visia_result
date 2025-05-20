@@ -13,6 +13,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final List<List<double>> allChartData = [
+    [-41, 45, 9, 46, 10, -41, 48],
     [-37, -39, -41, 47, 46, -24, 4],
     [-39, 43, -41, 44, 45, -31, 49],
     [-41, -4, 8, 23, 17, -41, -25],
@@ -29,6 +30,7 @@ class _HomeScreenState extends State<HomeScreen> {
     'Porphyrins',
   ];
   final List<String> dateData = [
+    '2025/05/19',
     '2025/04/20',
     '2025/03/14',
     '2025/02/16',
