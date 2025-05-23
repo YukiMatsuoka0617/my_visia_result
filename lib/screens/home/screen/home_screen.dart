@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_result_visia/chart_display_area.dart';
 import 'package:flutter_application_result_visia/chart_select_area.dart';
+import 'package:flutter_application_result_visia/data/hive/hive_sservise.dart';
 import 'package:flutter_application_result_visia/screens/home/widgets/home_screen_app_bar.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -45,6 +46,35 @@ class _HomeScreenState extends State<HomeScreen> {
 
   String selectedCategory = 'All';
   String selectedSubCategory = 'Spots';
+
+  @override
+  void initState() {
+    super.initState();
+    _loadData();
+  }
+
+  Future<void> _loadData() async {
+    final hive = HiveService();
+    final results = hive.getAllData();
+    final keys = results.keys.toList();
+    print('keys:$keys');
+
+    setState(() {
+      dateData.clear();
+      allChartData.clear();
+      for (final key in keys) {
+        final map = results[key];
+        print('value:$map');
+
+        final rawList = map['data'] as List<dynamic>;
+        List<double> dataList =
+            rawList.map((v) => (v as num).toDouble()).toList();
+        print('dataList:$dataList');
+        dateData.add(key);
+        allChartData.add(dataList);
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
