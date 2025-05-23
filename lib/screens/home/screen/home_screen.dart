@@ -57,19 +57,16 @@ class _HomeScreenState extends State<HomeScreen> {
     final hive = HiveService();
     final results = hive.getAllData();
     final keys = results.keys.toList();
-    print('keys:$keys');
 
     setState(() {
       dateData.clear();
       allChartData.clear();
       for (final key in keys) {
         final map = results[key];
-        print('value:$map');
 
         final rawList = map['data'] as List<dynamic>;
         List<double> dataList =
             rawList.map((v) => (v as num).toDouble()).toList();
-        print('dataList:$dataList');
         dateData.add(key);
         allChartData.add(dataList);
       }
