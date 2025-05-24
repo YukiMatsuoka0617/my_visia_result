@@ -76,7 +76,9 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: HomeScreenAppBar(),
+      appBar: HomeScreenAppBar(
+        onPushSaveButton: _loadData,
+      ),
       body: Padding(
         padding: EdgeInsets.all(16),
         child: Column(
