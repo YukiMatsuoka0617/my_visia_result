@@ -84,9 +84,14 @@ class _InputDataScreen extends State<StatefulWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blueAccent,
-        title: Text('Input Data Screen'),
-      ),
+          backgroundColor: Colors.blueAccent,
+          title: Text(
+            'Input Data Screen',
+            style: TextStyle(
+              color: Colors.white,
+            ),
+          ),
+          centerTitle: true),
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: Form(
@@ -99,7 +104,7 @@ class _InputDataScreen extends State<StatefulWidget> {
                   controller: _dateController,
                   readOnly: true,
                   decoration: const InputDecoration(
-                    labelText: '日付を選択',
+                    labelText: 'Select a date',
                     border: OutlineInputBorder(),
                   ),
                   onTap: () => _pickDate(context),
