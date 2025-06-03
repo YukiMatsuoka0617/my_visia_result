@@ -38,7 +38,6 @@ class HomeScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
           },
           icon: const Icon(
             Icons.add,
-            color: Colors.white,
           ),
         )
       ],
