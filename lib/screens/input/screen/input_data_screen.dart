@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_result_visia/data/hive/hive_sservise.dart';
+import 'package:flutter_application_result_visia/image_input_layout.dart';
 
 class InputDataScreen extends StatefulWidget {
   const InputDataScreen({super.key});
@@ -100,20 +101,23 @@ class _InputDataScreen extends State<StatefulWidget> {
             children: [
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 8),
-                child: TextFormField(
-                  controller: _dateController,
-                  readOnly: true,
-                  decoration: const InputDecoration(
-                    labelText: 'Select a date',
-                    border: OutlineInputBorder(),
+                child: ImageInputLayout(
+                  image: Icon(Icons.calendar_month),
+                  textFormField: TextFormField(
+                    controller: _dateController,
+                    readOnly: true,
+                    decoration: const InputDecoration(
+                      labelText: 'Select a date',
+                      border: OutlineInputBorder(),
+                    ),
+                    onTap: () => _pickDate(context),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return '日付を選択してください';
+                      }
+                      return null;
+                    },
                   ),
-                  onTap: () => _pickDate(context),
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return '日付を選択してください';
-                    }
-                    return null;
-                  },
                 ),
               ),
               ...labelData.map(
