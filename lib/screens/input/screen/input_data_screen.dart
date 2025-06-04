@@ -120,30 +120,250 @@ class _InputDataScreen extends State<StatefulWidget> {
                   ),
                 ),
               ),
-              ...labelData.map(
-                (label) {
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 8),
-                    child: TextFormField(
-                      controller: controllers[label],
-                      keyboardType: TextInputType.number,
-                      decoration: InputDecoration(
-                        labelText: label,
-                        border: const OutlineInputBorder(),
-                      ),
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return '$label を入力してください';
-                        }
-                        if (double.tryParse(value) == null) {
-                          return '$label は数値で入力してください';
-                        }
-                        return null;
-                      },
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8),
+                child: ImageInputLayout(
+                  image: Container(
+                    width: 20,
+                    height: 20,
+                    decoration: BoxDecoration(
+                      color: Colors.lightBlue,
+                      shape: BoxShape.circle,
                     ),
-                  );
-                },
+                  ),
+                  textFormField: TextFormField(
+                    controller: controllers[labelData[0]],
+                    keyboardType: TextInputType.number,
+                    decoration: InputDecoration(
+                      labelText: labelData[0],
+                      border: const OutlineInputBorder(),
+                    ),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return '${labelData[0]} を入力してください';
+                      }
+                      if (double.tryParse(value) == null) {
+                        return '${labelData[0]} は数値で入力してください';
+                      }
+                      return null;
+                    },
+                  ),
+                ),
               ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8),
+                child: ImageInputLayout(
+                  image: Container(
+                    width: 20,
+                    height: 20,
+                    decoration: BoxDecoration(
+                      color: Colors.lightBlue,
+                      shape: BoxShape.circle,
+                    ),
+                  ),
+                  textFormField: TextFormField(
+                    controller: controllers[labelData[1]],
+                    keyboardType: TextInputType.number,
+                    decoration: InputDecoration(
+                      labelText: labelData[1],
+                      border: const OutlineInputBorder(),
+                    ),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return '${labelData[1]} を入力してください';
+                      }
+                      if (double.tryParse(value) == null) {
+                        return '${labelData[1]} は数値で入力してください';
+                      }
+                      return null;
+                    },
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8),
+                child: ImageInputLayout(
+                  image: Container(
+                    width: 20,
+                    height: 20,
+                    decoration: BoxDecoration(
+                      color: Colors.lightBlue,
+                      shape: BoxShape.circle,
+                    ),
+                  ),
+                  textFormField: TextFormField(
+                    controller: controllers[labelData[2]],
+                    keyboardType: TextInputType.number,
+                    decoration: InputDecoration(
+                      labelText: labelData[2],
+                      border: const OutlineInputBorder(),
+                    ),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return '${labelData[2]} を入力してください';
+                      }
+                      if (double.tryParse(value) == null) {
+                        return '${labelData[2]} は数値で入力してください';
+                      }
+                      return null;
+                    },
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8),
+                child: ImageInputLayout(
+                  image: Container(
+                    width: 20,
+                    height: 20,
+                    decoration: BoxDecoration(
+                      color: Colors.green,
+                      shape: BoxShape.circle,
+                    ),
+                  ),
+                  textFormField: TextFormField(
+                    controller: controllers[labelData[3]],
+                    keyboardType: TextInputType.number,
+                    decoration: InputDecoration(
+                      labelText: labelData[3],
+                      border: const OutlineInputBorder(),
+                    ),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return '${labelData[3]} を入力してください';
+                      }
+                      if (double.tryParse(value) == null) {
+                        return '${labelData[3]} は数値で入力してください';
+                      }
+                      return null;
+                    },
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8),
+                child: ImageInputLayout(
+                  image: Container(
+                    width: 20,
+                    height: 20,
+                    decoration: BoxDecoration(
+                      color: Colors.deepPurpleAccent,
+                      shape: BoxShape.circle,
+                    ),
+                  ),
+                  textFormField: TextFormField(
+                    controller: controllers[labelData[4]],
+                    keyboardType: TextInputType.number,
+                    decoration: InputDecoration(
+                      labelText: labelData[4],
+                      border: const OutlineInputBorder(),
+                    ),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return '${labelData[4]} を入力してください';
+                      }
+                      if (double.tryParse(value) == null) {
+                        return '${labelData[4]} は数値で入力してください';
+                      }
+                      return null;
+                    },
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8),
+                child: ImageInputLayout(
+                  image: Container(
+                    width: 20,
+                    height: 20,
+                    decoration: BoxDecoration(
+                      color: Colors.brown,
+                      shape: BoxShape.circle,
+                    ),
+                  ),
+                  textFormField: TextFormField(
+                    controller: controllers[labelData[5]],
+                    keyboardType: TextInputType.number,
+                    decoration: InputDecoration(
+                      labelText: labelData[5],
+                      border: const OutlineInputBorder(),
+                    ),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return '${labelData[5]} を入力してください';
+                      }
+                      if (double.tryParse(value) == null) {
+                        return '${labelData[5]} は数値で入力してください';
+                      }
+                      return null;
+                    },
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8),
+                child: ImageInputLayout(
+                  image: Container(
+                    width: 20,
+                    height: 20,
+                    decoration: BoxDecoration(
+                      color: Colors.blueGrey,
+                      shape: BoxShape.circle,
+                    ),
+                  ),
+                  textFormField: TextFormField(
+                    controller: controllers[labelData[6]],
+                    keyboardType: TextInputType.number,
+                    decoration: InputDecoration(
+                      labelText: labelData[6],
+                      border: const OutlineInputBorder(),
+                    ),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return '${labelData[6]} を入力してください';
+                      }
+                      if (double.tryParse(value) == null) {
+                        return '${labelData[6]} は数値で入力してください';
+                      }
+                      return null;
+                    },
+                  ),
+                ),
+              ),
+              // ...labelData.map(
+              //   (label) {
+              //     return Padding(
+              //       padding: const EdgeInsets.symmetric(vertical: 8),
+              //       child: ImageInputLayout(
+              //         image: Container(
+              //           width: 20,
+              //           height: 20,
+              //           decoration: BoxDecoration(
+              //             color: Colors.lightBlue,
+              //             shape: BoxShape.circle,
+              //           ),
+              //         ),
+              //         textFormField: TextFormField(
+              //           controller: controllers[label],
+              //           keyboardType: TextInputType.number,
+              //           decoration: InputDecoration(
+              //             labelText: label,
+              //             border: const OutlineInputBorder(),
+              //           ),
+              //           validator: (value) {
+              //             if (value == null || value.isEmpty) {
+              //               return '$label を入力してください';
+              //             }
+              //             if (double.tryParse(value) == null) {
+              //               return '$label は数値で入力してください';
+              //             }
+              //             return null;
+              //           },
+              //         ),
+              //       ),
+              //     );
+              //   },
+              // ),
               const SizedBox(height: 16),
               ElevatedButton(
                 onPressed: _submit,
