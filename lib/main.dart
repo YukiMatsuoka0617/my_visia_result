@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_result_visia/data/hive/hive_sservise.dart';
+import 'package:flutter_application_result_visia/data/hive/hive_servise.dart';
 import 'package:flutter_application_result_visia/screens/home/screen/home_screen.dart';
 
 void main() async {

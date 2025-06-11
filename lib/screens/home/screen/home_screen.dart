@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_result_visia/chart_display_area.dart';
 import 'package:flutter_application_result_visia/chart_select_area.dart';
-import 'package:flutter_application_result_visia/data/hive/hive_sservise.dart';
+import 'package:flutter_application_result_visia/data/hive/hive_servise.dart';
 import 'package:flutter_application_result_visia/screens/home/widgets/home_screen_app_bar.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
