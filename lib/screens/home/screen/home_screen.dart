@@ -47,6 +47,8 @@ class _HomeScreenState extends State<HomeScreen> {
   String selectedCategory = 'All';
   String selectedSubCategory = 'Spots';
 
+  int _selectedIndex = 1;
+
   @override
   void initState() {
     super.initState();
@@ -142,6 +144,31 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ],
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _selectedIndex,
+        backgroundColor: Colors.blueAccent,
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.grey,
+        onTap: (index) {
+          setState(() {
+            _selectedIndex = index;
+          });
+        },
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'ホーム',
+          ),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.search),
+              label: '検索',
+              backgroundColor: Colors.white),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'マイページ',
+          ),
+        ],
       ),
     );
   }
