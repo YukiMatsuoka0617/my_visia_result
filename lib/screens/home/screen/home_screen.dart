@@ -149,7 +149,7 @@ class _HomeScreenState extends State<HomeScreen> {
         currentIndex: _selectedIndex,
         backgroundColor: Colors.blueAccent,
         selectedItemColor: Colors.white,
-        unselectedItemColor: Colors.grey,
+        unselectedItemColor: Colors.white,
         onTap: (index) {
           setState(() {
             _selectedIndex = index;
@@ -157,16 +157,19 @@ class _HomeScreenState extends State<HomeScreen> {
         },
         items: const [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'ホーム',
+            icon: Icon(Icons.manage_accounts_outlined),
+            activeIcon: Icon(Icons.manage_accounts),
+            label: 'Manage Data',
           ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.search),
-              label: '検索',
-              backgroundColor: Colors.white),
+            icon: Icon(Icons.home_work_outlined),
+            activeIcon: Icon(Icons.home_work),
+            label: 'Home',
+          ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'マイページ',
+            icon: Icon(Icons.my_library_add_outlined),
+            activeIcon: Icon(Icons.my_library_add),
+            label: 'Add Data',
           ),
         ],
       ),
