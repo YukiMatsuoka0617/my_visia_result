@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_result_visia/screens/input/screen/input_data_screen.dart';
+import 'package:flutter_application_result_visia/screens/manage_data/screen/manage_data_screen.dart';
 
 class HomeScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
   const HomeScreenAppBar({
@@ -22,7 +23,14 @@ class HomeScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
       centerTitle: true,
       actions: [
         IconButton(
-          onPressed: () {},
+          onPressed: () async {
+            await Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => ManageDataScreen(),
+              ),
+            );
+          },
           icon: const Icon(
             Icons.settings,
           ),
