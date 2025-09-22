@@ -3,6 +3,7 @@ import 'package:flutter_application_result_visia/chart_display_area.dart';
 import 'package:flutter_application_result_visia/chart_select_area.dart';
 import 'package:flutter_application_result_visia/data/hive/hive_servise.dart';
 import 'package:flutter_application_result_visia/screens/home/widgets/home_screen_app_bar.dart';
+import 'package:flutter_application_result_visia/screens/input/screen/input_data_screen.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -150,10 +151,32 @@ class _HomeScreenState extends State<HomeScreen> {
         backgroundColor: Colors.blueAccent,
         selectedItemColor: Colors.white,
         unselectedItemColor: Colors.white,
-        onTap: (index) {
+        onTap: (index) async {
           setState(() {
             _selectedIndex = index;
           });
+          switch (index) {
+            case 0:
+              break;
+            case 1:
+              break;
+            case 2:
+              final result = await Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => InputDataScreen(),
+                ),
+              );
+              if (result != null) {
+                if (result) {
+                  _loadData();
+                }
+              }
+              setState(() {
+                _selectedIndex = 1;
+              });
+              break;
+          }
         },
         items: const [
           BottomNavigationBarItem(
