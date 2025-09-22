@@ -22,6 +22,12 @@ class HomeScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
       centerTitle: true,
       actions: [
         IconButton(
+          onPressed: () {},
+          icon: const Icon(
+            Icons.settings,
+          ),
+        ),
+        IconButton(
           onPressed: () async {
             final result = await Navigator.push(
               context,
@@ -39,7 +45,7 @@ class HomeScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
           icon: const Icon(
             Icons.add,
           ),
-        )
+        ),
       ],
     );
   }
