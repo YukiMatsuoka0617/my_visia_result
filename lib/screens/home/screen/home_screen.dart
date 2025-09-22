@@ -4,6 +4,7 @@ import 'package:flutter_application_result_visia/chart_select_area.dart';
 import 'package:flutter_application_result_visia/data/hive/hive_servise.dart';
 import 'package:flutter_application_result_visia/screens/home/widgets/home_screen_app_bar.dart';
 import 'package:flutter_application_result_visia/screens/input/screen/input_data_screen.dart';
+import 'package:flutter_application_result_visia/screens/manage_data/screen/manage_data_screen.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -157,6 +158,16 @@ class _HomeScreenState extends State<HomeScreen> {
           });
           switch (index) {
             case 0:
+              await Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const ManageDataScreen(),
+                ),
+              );
+              // 遷移から戻ったら BottomNavigationBar を元の画面に戻す場合
+              setState(() {
+                _selectedIndex = 1; // Home に戻すなど
+              });
               break;
             case 1:
               break;
