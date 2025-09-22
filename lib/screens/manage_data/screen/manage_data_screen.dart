@@ -28,42 +28,68 @@ class _ManageDataScreenState extends State<ManageDataScreen> {
   Widget build(BuildContext context) {
     final keys = _box.keys.toList();
 
+    // 🔹 チェックされている件数を計算
+    final checkedCount =
+        _checkedItems.values.where((isChecked) => isChecked).length;
+
     return Scaffold(
       appBar: AppBar(
-          backgroundColor: Colors.blueAccent,
-          title: const Text(
-            'Data List',
-            style: TextStyle(
-              color: Colors.white,
+        backgroundColor: Colors.blueAccent,
+        title: const Text(
+          'Data List',
+          style: TextStyle(
+            color: Colors.white,
+          ),
+        ),
+        centerTitle: true,
+      ),
+      body: Column(
+        children: [
+          Container(
+            width: double.infinity,
+            color: Colors.grey.shade200,
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              'チェック数: $checkedCount',
+              textAlign: TextAlign.right,
+              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             ),
           ),
-          centerTitle: true),
-      body: keys.isEmpty
-          ? const Center(child: Text('データがありません'))
-          : ListView.builder(
-              itemCount: keys.length,
-              itemBuilder: (context, index) {
-                final key = keys[index].toString();
-                return ListTile(
-                  title: Text(key),
-                  // TODO:表示するかどうか検討
-                  subtitle: Text(_box.get(key)?['data'].toString() ?? ''),
-                  trailing: Checkbox(
-                    value: _checkedItems[key] ?? false,
-                    onChanged: (bool? value) {
-                      setState(() {
-                        _checkedItems[key] = value ?? false;
-                      });
+          Expanded(
+            child: keys.isEmpty
+                ? const Center(child: Text('データがありません'))
+                : ListView.builder(
+                    itemCount: keys.length,
+                    itemBuilder: (context, index) {
+                      final key = keys[index].toString();
+                      return ListTile(
+                        title: Text(key),
+                        // NOTE: 表示するかどうか検討
+                        subtitle: Text(_box.get(key)?['data'].toString() ?? ''),
+                        leading: CircleAvatar(
+                          backgroundColor: Colors.blueAccent,
+                          foregroundColor: Colors.white,
+                          child: Text('${index + 1}'),
+                        ),
+                        trailing: Checkbox(
+                          value: _checkedItems[key] ?? false,
+                          onChanged: (bool? value) {
+                            setState(() {
+                              _checkedItems[key] = value ?? false;
+                            });
+                          },
+                        ),
+                        onTap: () {
+                          setState(() {
+                            _checkedItems[key] = !(_checkedItems[key] ?? false);
+                          });
+                        },
+                      );
                     },
                   ),
-                  onTap: () {
-                    setState(() {
-                      _checkedItems[key] = !(_checkedItems[key] ?? false);
-                    });
-                  },
-                );
-              },
-            ),
+          ),
+        ],
+      ),
     );
   }
 }
